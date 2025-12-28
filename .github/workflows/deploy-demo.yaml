@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 24
           package-manager: pnpm@latest
+          build-cmd: pnpm run build:github
 
 
   deploy:

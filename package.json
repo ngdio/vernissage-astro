@@ -4,6 +4,7 @@
   "description": "Photography-focused portfolio theme for Astro based on Tailwind",
   "scripts": {
     "build": "pnpm dlx astro build",
+    "build:github": "GITHUB_PAGES=true pnpm dlx astro build",
     "dev": "pnpm dlx astro dev",
     "preview": "pnpm dlx astro preview",
     "cleanup": "pnpm dlx rimraf dist",
