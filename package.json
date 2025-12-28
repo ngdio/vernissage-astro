@@ -1,35 +1,26 @@
 {
-  "name": "vernissage-11ty",
+  "name": "vernissage-astro",
   "version": "0.1.0",
-  "description": "Photography-focused portfolio theme for Eleventy based on Tailwind",
+  "description": "Photography-focused portfolio theme for Astro based on Tailwind",
   "scripts": {
-    "build": "pnpm run cleanup && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.js",
-    "dev": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.js --serve --port 3000 --incremental",
-    "cleanup": "pnpm dlx rimraf _site _tmp .cache",
-    "serve-build": "pnpm dlx http-server _site --port 4000"
+    "build": "pnpm dlx astro build",
+    "dev": "pnpm dlx astro dev",
+    "preview": "pnpm dlx astro preview",
+    "cleanup": "pnpm dlx rimraf dist",
+    "serve-build": "pnpm dlx http-server dist --port 4000"
   },
   "keywords": [],
   "author": "Niklas Graeber <dev@n1klas.net>",
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-img": "^6.0.4",
-    "@11ty/eleventy-plugin-vite": "^7.0.0",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.7.0",
+    "astro": "^5.16.6",
     "autoprefixer": "^10.4.23",
-    "jsx-async-runtime": "^1.0.4",
     "photoswipe": "^5.4.4",
-    "postcss": "^8.5.6",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.0"
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "prettier": "3.6.2"
