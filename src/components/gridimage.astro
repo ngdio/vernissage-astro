@@ -1,19 +1,47 @@
 ---
-import { Picture } from 'astro:assets'
+import { Picture, getImage } from 'astro:assets'
 
-const { path, alt, width, height, index } = Astro.props
+var { path, alt, index, cols } = Astro.props
+
+if (!path.match("^https?://")) {
+  path = import(`../assets/${path}.jpg`)
+}
+
+const optimizedImage = await getImage({
+  src: path,
+  inferSize: true,
+  layout: "constrained",
+  format: "avif"
+})
+
+const fallbackImage = await getImage({
+  src: path,
+  inferSize: true,
+  format: "jpg"
+})
+
+if (!cols) {
+  cols = 1
+}
+var gridSizes = "100vw"
+if (cols < 4) {
+  gridSizes = `(min-width: 48rem) ${25 * cols}vw, 100vw`
+}
 ---
 <a
-  href={path}
-  data-pswp-width={width}
-  data-pswp-height={height}
+  href={optimizedImage.src}
+  data-pswp-width={optimizedImage.options.width}
+  data-pswp-height={optimizedImage.options.height}
+  data-pswp-srcset={optimizedImage.srcSet.attribute}
   data-cropped="true">
-  <Picture
-    alt={alt}
-    inferSize
-    formats={['avif', 'webp']}
-    style={"--i: " + index}
-    class="block h-full w-full object-cover object-center animate-fade-in-index animate transition duration-500 transform scale-100 hover:scale-110"
-    src={path}
-  />
+  <picture>
+    <source
+      sizes={gridSizes}
+      srcset={optimizedImage.srcSet.attribute} />
+    <img
+      alt={alt}
+      style={"--i: " + index}
+      class="block h-full w-full object-cover object-center animate-fade-in-index animate transition duration-500 transform scale-100 hover:scale-110"
+      src={fallbackImage.src} />
+  </picture>
 </a>

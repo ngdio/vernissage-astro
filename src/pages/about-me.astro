@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets"
+import { Picture } from "astro:assets"
 
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Avatar from "../assets/Avatar.png"
@@ -10,10 +10,13 @@ import Avatar from "../assets/Avatar.png"
     <div class="col-span-2 md:col-span-1">
       <div
         class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-        <Image
+        <Picture
           src={Avatar}
           alt=""
-          class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto" />
+          class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto"
+          layout="fixed"
+          formats={["avif"]}
+          fallbackFormat="jpg" />
         <div class="absolute bottom-0 left-0 right-0 text-center">
           <p
             class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">

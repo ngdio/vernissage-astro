@@ -30,7 +30,7 @@ const { cols, images } = Astro.props
   <section class="text-neutral-700">
     <div class="container w-full">
       <div
-        class={`grid gap-2 grid-cols-1 md:grid-cols-${cols} md:auto-rows-[90px] w-full`}
+        class={`grid gap-2 grid-cols-1 md:grid-cols-${cols} md:auto-rows-[90px] w-full max-w-max`}
         id="gallery-index">
         {images.map((img, index) => {
           let className = "overflow-hidden"
@@ -40,10 +40,9 @@ const { cols, images } = Astro.props
             <div class={className}>
               <GridImage
                 path={img.path}
-                width={img.width + ""}
-                height={img.height + ""}
                 alt={img.alt}
                 index={index}
+                cols={img.cols}
               />
             </div>
           )
