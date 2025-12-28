@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://ngdio.github.io",
   base: process.env.GITHUB_PAGES === "true" ? "/vernissage-astro" : "",
+  trailingSlash: "always",
 
   image: {
     domains: ["images.unsplash.com"],
