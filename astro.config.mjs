@@ -5,6 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://ngdio.github.io",
+  base: "/vernissage-astro",
+
   image: {
     domains: ["images.unsplash.com"],
   },
