@@ -34,6 +34,13 @@ export default async function (eleventyConfig) {
     transformOnRequest: false,
     formats: ["avif", "webp", "jpeg"],
     widths: [200, 500, 1000, "auto"],
+    htmlOptions: {
+			imgAttributes: {
+				loading: "lazy",
+				decoding: "async",
+			},
+			pictureAttributes: {}
+		},
   })
 
   eleventyConfig.addExtension(["11ty.jsx", "11ty.ts", "11ty.tsx"], {
