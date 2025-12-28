@@ -33,7 +33,7 @@ import menus from "../data/menus.json"
           {menus.header.map((entry: { url: string; title: string }) => (
             <li class="group transition duration-300">
               <a
-                href={import.meta.env.BASE_URL + entry.url}
+                href={!entry.url.match("^https?://") ? import.meta.env.BASE_URL + entry.url : entry.url}
                 class="font-signika text-2xl tap-highlight-transparent">
                 {entry.title}
                 <span
