@@ -21,25 +21,14 @@ jobs:
       matrix:
         node-version: [24]
     steps:
-      - uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Checkout repository using Git
+        uses: actions/checkout@v5
+      - name: Install, build, and upload your site
+        uses: withastro/action@v5
         with:
-          version: 10
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-      - name: Persist Eleventy .cache
-        uses: actions/cache@v4
-        with:
-          path: ./.cache
-          key: ${{ runner.os }}-eleventy-fetch-cache
-      - run: pnpm install
-      - run: pnpm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          node-version: 24
+          package-manager: pnpm@latest
+
 
   deploy:
     environment:
